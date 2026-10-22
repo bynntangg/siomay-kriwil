@@ -517,7 +517,7 @@
             .features-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
         }
 
-        /* --- BEST SELLERS --- */
+               /* --- BEST SELLERS --- */
         .best-sellers {
             background-color: var(--beige);
             padding: 60px 0;
@@ -543,14 +543,14 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr); /* <-- Diubah jadi 2 kolom di mobile */
+            gap: 16px; /* Gap sedikit dirapatkan untuk mobile */
         }
 
         .product-card {
             background-color: white;
             border-radius: 20px;
-            padding: 16px;
+            padding: 12px; /* Padding sedikit dikurangi agar muat di 2 kolom mobile */
             border: 1px solid var(--beige);
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             display: flex;
@@ -560,9 +560,9 @@
         .product-img {
             border-radius: 16px;
             overflow: hidden;
-            aspect-ratio: 4/3; /* Less square on mobile for better scroll */
+            aspect-ratio: 1; /* Diubah jadi persegi 1:1 agar rapi di 2 kolom */
             background-color: var(--beige);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .product-img img {
@@ -573,14 +573,19 @@
         }
 
         .product-info h3 {
-            font-size: 18px;
-            margin-bottom: 6px;
+            font-size: 16px; /* Ukuran font disesuaikan untuk mobile */
+            margin-bottom: 4px;
+            line-height: 1.1;
         }
 
         .product-info p {
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(53, 18, 15, 0.6);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Batasi teks jadi 2 baris */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .product-footer {
@@ -588,20 +593,20 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
-            padding-top: 16px;
+            padding-top: 12px;
             border-top: 1px dashed #e5e5e5;
         }
 
         .price {
             font-weight: 700;
             color: var(--brown);
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .add-btn {
             background-color: var(--yellow);
-            width: 44px;
-            height: 44px;
+            width: 36px; /* Tombol sedikit diperkecil di mobile */
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -618,12 +623,19 @@
                 border: 1px solid var(--dark); display: flex;
                 align-items: center; justify-content: center;
             }
-            .products-grid { grid-template-columns: repeat(3, 1fr); gap: 30px; }
-            .product-img { aspect-ratio: 1; }
-            .product-info h3 { font-size: 20px; }
-            .product-info p { font-size: 14px; }
+            .products-grid { 
+                grid-template-columns: repeat(2, 1fr); /* <-- Tetap 2 kolom di desktop */
+                gap: 30px; 
+                max-width: 800px; /* Agar tidak terlalu melebar di desktop */
+                margin: 0 auto;
+            }
+            .product-card { padding: 20px; }
+            .product-img { aspect-ratio: 4/3; margin-bottom: 16px; }
+            .product-info h3 { font-size: 22px; margin-bottom: 8px; }
+            .product-info p { font-size: 14px; margin-bottom: 16px; }
+            .price { font-size: 18px; }
+            .add-btn { width: 44px; height: 44px; }
         }
-
         /* --- PROCESS SECTION --- */
         .process {
             padding: 60px 0;
@@ -1114,7 +1126,7 @@
             <div class="hero-grid">
                 <!-- Center Image (First on Mobile) -->
                 <div class="hero-center">
-                    <img src="siomay.jpg" alt="Siomay Kriwil">
+                    <img src="somay lengkap.jpeg" alt="Siomay Kriwil">
                 </div>
 
                 <!-- Left Text -->
@@ -1376,22 +1388,15 @@
         name: "SIOMAY KRIWIL",
         desc: "Siomay gurih dengan tekstur khas.",
         price: 25000,
-        img: "siomay.jpg"   // <-- Ganti nama file sesuai foto asli
+        img: "siomay.jpeg"   // <-- Ganti nama file sesuai foto asli
     },
     {
         id: 2,
         name: "SIOMAY KOMPLIT",
         desc: "Sajian lengkap dengan tahu, kentang, kol.",
         price: 35000,
-        img: "images.jpg"  // <-- Ganti nama file sesuai foto asli
+        img: "somay lengkap.jpeg"  // <-- Ganti nama file sesuai foto asli
     },
-    {
-        id: 3,
-        name: "PAKET KRIWIL",
-        desc: "Pilihan praktis untuk makan bersama.",
-        price: 50000,
-        img: "imagess.jpg"    // <-- Ganti nama file sesuai foto asli
-    }
 ];
 
         let cart = [];
